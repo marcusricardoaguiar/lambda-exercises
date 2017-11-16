@@ -1,6 +1,7 @@
 package katas;
 
 import java.util.List;
+import java.util.Optional;
 
 import model.Movie;
 import util.DataUtil;
@@ -13,9 +14,11 @@ import util.DataUtil;
 public class Kata5 {
     public static Double execute() {
         List<Movie> movies = DataUtil.getMovies();
-        return movies.stream()
-            	.map(movie -> movie.getRating())
-            	.reduce(Double::max)
-            	.get();
+        Optional<Double> result = movies.stream()
+            	.map(Movie::getRating)
+            	.reduce(Double::max);
+        
+        if(result.isPresent()) return result.get();
+        else return 0.0;
     }
 }

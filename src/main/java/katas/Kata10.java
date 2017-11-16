@@ -61,6 +61,7 @@ public class Kata10 {
         			"name", list.get("name"), 
         			"videos", videos.stream()
         						.filter(video -> video.get("listId").equals(list.get("id")))
+        						// mapping id and title of each video
         						.map(video -> ImmutableMap.of(
 			        							"id", video.get("id"), 
 			        							"title", video.get("title"))

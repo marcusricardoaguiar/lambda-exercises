@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import com.google.common.collect.ImmutableList;
 
+import model.Movie;
 import model.MovieList;
 import util.DataUtil;
 
@@ -19,7 +20,7 @@ public class Kata3 {
         List<MovieList> movieLists = DataUtil.getMovieLists();
         List<Integer> videoIds = movieLists.stream()
         	.flatMap(movieList -> movieList.getVideos().stream())
-        	.map(video -> video.getId())
+        	.map(Movie::getId)
         	.collect(Collectors.toList());
         return ImmutableList.copyOf(videoIds);
     }

@@ -25,9 +25,11 @@ public class Kata9 {
         	.map(video -> ImmutableMap.of(
         				"id", video.getId(),
         				"title", video.getTitle(),
+        				// getting middle time of video
         				"time", video.getInterestingMoments().stream()
         						.filter(date -> "Middle".equals(date.getType()))
         						.findAny().get().getTime(),
+        				// getting url boxArt of video
         				"url", video.getBoxarts().stream()
 									.reduce(BoxArtUtil::smallest)
 									.get().getUrl()))

@@ -23,6 +23,7 @@ public class Kata7 {
         List<Map> map = movieLists.stream()
 	        	.flatMap(movie -> movie.getVideos().stream())
 	        	.map(video -> ImmutableMap.of("id", video.getId(), "title", video.getTitle(), 
+	        			// getting smallest boxarts
 	        			"url", video.getBoxarts().stream()
 	        						.reduce(BoxArtUtil::smallest)
 	        						.get().getUrl()))
